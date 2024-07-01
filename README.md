@@ -54,4 +54,4 @@ The document should be provided in a file called critics.md in the Merge Request
 ![create the repo](https://user-images.githubusercontent.com/4325587/173120718-16547fae-b507-496d-939b-7cf9a7950640.jpg)
 
 - Clone **your** repository locally
-- Inside the folder, run: `git pull https://gitlab.com/codeminer-42/avaliacoes/dont-forget main && git push origin main`.
+- Inside the folder, run: `git pull https://gitlab.com/codeminer-42/avaliacoes/minerplace-frontend main && git push origin main`.
