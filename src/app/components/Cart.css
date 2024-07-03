@@ -15,3 +15,22 @@
   color: #eece23;
   background-color: #111827;
 }
+
+.button {
+  padding: 6px 10px;
+  color: black;
+  background-color: #eece23;
+  font-size: 12px;
+  border-radius: 8px;
+  font-weight: 500;
+
+  &:not(:disabled):hover {
+    color: #eece23;
+    background-color: #111827;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}

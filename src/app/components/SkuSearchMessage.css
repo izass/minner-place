@@ -1,0 +1,13 @@
+.sku-search-message-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 128px;
+
+  .message {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

@@ -1,0 +1,20 @@
+.sku-search-form {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 24px;
+
+
+  .sku-search-input {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid black;
+    height: 36px;
+    padding: 8px 24px;
+    color: black;
+  }
+
+  .button {
+    width: 100px;
+  }
+}

@@ -3,12 +3,13 @@
 import { TiImageOutline } from 'react-icons/ti'
 
 import { InventoryProduct } from '../types'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import axios from 'axios'
 import { useAppContext } from '../context/AppContext'
 
 export function Product({ product }: { product: InventoryProduct }) {
   const { cartId, toast, updateCartId } = useAppContext()
+  const queryClient = useQueryClient()
 
   const { mutate } = useMutation({
     mutationFn: ({
@@ -26,6 +27,7 @@ export function Product({ product }: { product: InventoryProduct }) {
     },
     onSuccess: ({ data }) => {
       updateCartId(data?.id)
+      queryClient.invalidateQueries({ queryKey: ['cart'] })
       toast(`${product.name} added to the cart!`)
     },
   })
