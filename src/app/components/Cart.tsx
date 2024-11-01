@@ -18,6 +18,8 @@ export function Cart() {
     setCartItems,
   } = useCart()
 
+  console.log('@@@: ', cart.line_items)
+
   return (
     <div className="rounded-xl shadow bg-gray-700 border-gray-800 py-6 px-5 text-white">
       <SkuSearchModal

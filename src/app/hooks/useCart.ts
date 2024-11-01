@@ -3,10 +3,11 @@ import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useAppContext } from '../context/AppContext'
 import axios from 'axios'
 import { getCarts } from '../service/carts'
+import { Cart } from '../components/domain/api/carts'
 
 export const useCart = () => {
   const [openModal, setOpenModal] = useState(false)
-  const [cartItems, setCartItems] = useState(null)
+  const [cartItems, setCartItems] = useState({} as Cart)
   const queryClient = useQueryClient()
 
   const { cartId, toast } = useAppContext()
@@ -35,6 +36,11 @@ export const useCart = () => {
       line_items_attributes: mappedClearedCartItems,
     })
 
+    setCartItems((state) => ({
+      ...state,
+      line_items: [],
+    }))
+
     queryClient.invalidateQueries({ queryKey: ['cart'] })
     toast('Cart cleared!')
   }, [cart, queryClient, toast])
@@ -42,8 +48,7 @@ export const useCart = () => {
   const handleOpenModal = () => setOpenModal(true)
   const closeModal = () => setOpenModal(false)
 
-  const isEmpty = !cart?.line_items?.length
-
+  const isEmpty = !cartItems?.line_items?.length
 
   return {
     isEmpty,
@@ -52,6 +57,6 @@ export const useCart = () => {
     openModal,
     handleOpenModal,
     closeModal,
-    setCartItems
+    setCartItems,
   }
 }

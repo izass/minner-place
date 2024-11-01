@@ -61,13 +61,17 @@ export const useSkuSearch = ({
           const totalPrize =
             parseFloat(total_price) + parseFloat(productToAdd.price)
 
+          console.log('totalPrize: ', totalPrize)
+          console.log('total_price: ', total_price)
+          console.log('(productToAdd.price: ', productToAdd.price)
+
           return {
             ...state,
             line_items: newLineItems,
-            total_prize: totalPrize,
+            total_price: totalPrize,
           }
         })
-        return data
+        return data[0]
       },
       [setCartItems],
     ),
@@ -86,13 +90,13 @@ export const useSkuSearch = ({
   }
 
   useEffect(() => {
-    if (product?.length) {
+    if (product) {
       closeModal()
       queryClient.removeQueries({ queryKey: ['product'] })
     }
   }, [product, closeModal, queryClient])
 
-  const notFound = product?.length === 0
+  const notFound = !product
 
   return {
     search,
